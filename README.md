@@ -1,10 +1,10 @@
-# 📉 Customer Churn Prediction & Retention Strategy
+#  Customer Churn Prediction & Retention Strategy
 
 Este proyecto implementa un pipeline end-to-end de Machine Learning diseñado para predecir la tasa de cancelación de clientes (*Churn*) en una empresa de telecomunicaciones. El objetivo principal es identificar proactivamente a los usuarios en riesgo de abandono para permitir intervenciones tempranas y optimizar la estrategia de retención reduciendo la pérdida de LTV (*Lifetime Value*).
 
 ---
 
-## 🛠️ Arquitectura del Proyecto
+##  Arquitectura del Proyecto
 
 ```text
 project-1-churn-ltv/
