@@ -1,25 +1,5 @@
-# Entorno virtual
 venv/
-env/
-ENV/
-
-# Python cache / Byte-code
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Datos (no se suben los datos pesados a GitHub)
+.venv/
 data/raw/*
-!data/raw/.gitkeep
-data/processed/*
-!data/processed/.gitkeep
-
-# Artefactos y Modelos pesados (opcional si pesan mucho)
 models/*.joblib
-
-# VS Code / IDEs
-.vscode/
-.idea/
-
-# Streamlit
-.streamlit/
+__pycache__/
