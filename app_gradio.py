@@ -1,15 +1,13 @@
-import os
 import sys
 from pathlib import Path
-from src.feature_engineering import prepare_data
 
-# Configurar ruta raíz
 ROOT_DIR = Path(__file__).resolve().parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 import gradio as gr
 import pandas as pd
+from src.explainability import generate_shap_plot
 from src.predict import predict_churn
 
 
@@ -71,7 +69,10 @@ def predict_interface(
     )
     prob_str = f"{prob:.2%}"
 
-    return estado, prob_str
+    # Generar gráfico SHAP con nombres limpios
+    shap_img_path = generate_shap_plot(input_data)
+
+    return estado, prob_str, shap_img_path
 
 
 demo = gr.Interface(
@@ -149,9 +150,10 @@ demo = gr.Interface(
     outputs=[
         gr.Textbox(label="Diagnóstico del Cliente"),
         gr.Textbox(label="Probabilidad de Abandono"),
+        gr.Image(label="Explicabilidad del Modelo (Factores SHAP)"),
     ],
-    title="📉 Predictor de Churn - Telco Customer",
-    description="Ajuste los parámetros del cliente para obtener la predicción del modelo XGBoost.",
+    title="📉 Predictor de Churn con Explicabilidad SHAP",
+    description="Ajuste los parámetros del cliente para obtener la predicción y el desglose de factores de decisión del modelo XGBoost.",
 )
 
 if __name__ == "__main__":
